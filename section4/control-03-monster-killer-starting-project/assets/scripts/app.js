@@ -15,6 +15,7 @@ const enteredValue = prompt('Maximum life for you and the moster.', '100');
 
 let chosenMaxLife = parseInt(enteredValue);
 let battleLog = [];
+let lastLoggedEntry;
 
 if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
     chosenMaxLife = 100;
@@ -172,7 +173,29 @@ function onHealPlayer() {
 }
 
 function onPrintLog() {
-    console.log(battleLog);
+    for (let i = 0; i < 3; i++) {
+        console.log('-------------');
+    }
+
+    // for (let i = 0; i < battleLog.length; i++) {
+    //     console.log(battleLog[i]);
+    // }
+
+    let i = 0;
+    for (const logEntry of battleLog) {
+        if (
+            (!lastLoggedEntry && lastLoggedEntry !== 0) ||
+            lastLoggedEntry < i
+        ) {
+            console.log(`#${i}`);
+            for (const key in logEntry) {
+                console.log(`${key} => ${logEntry[key]}`);
+            }
+            lastLoggedEntry = i;
+            break;
+        }
+        i++;
+    }
 }
 
 attackBtn.addEventListener('click', onAttack);

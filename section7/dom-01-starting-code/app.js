@@ -1,7 +1,7 @@
 const ul = document.body.firstElementChild.nextElementSibling;
 const firstLi = ul.firstElementChild;
 
-console.dir(firstLi);
+console.log(firstLi);
 
 const section = document.querySelector('section');
 const button = document.querySelector('button');
